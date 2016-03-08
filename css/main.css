@@ -1,0 +1,176 @@
+header{
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 100%;
+  height:90px;
+  display: relative;
+  position: fixed;
+  margin:auto;
+  top:0;
+  background-color: white;
+}
+
+body{
+  background-image: url('../img/background.png');
+  background-color: #E1DFDD;
+  margin:0;
+  z-index: 0;
+}
+
+footer{
+  background-color: #110D0B;
+  color: #039BE5;
+  height: 200px;
+  width: 100%;
+  bottom: 0;
+}
+.code{
+  background: #37474F;
+  color: #D84315;
+  display: block;
+  padding: 20px;
+}
+.article-img{
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+.article-head{
+  text-align: center;
+  background-color: #607D8B; 
+  color: white;
+  font-size: 25pt;
+}
+.article-body{
+  display: block;
+  font-size: 15pt;
+  margin: auto;
+  width:80%;
+  margin-bottom: 30px;
+}
+.up-foot{
+  margin-bottom: 95px;
+}
+.footer-logo{
+  display:inside-block;
+  margin-left: 5%;
+  height: 60px;
+  width: 300px;
+}
+.container {
+  padding-top:140px;
+  min-height: 800px; 
+}
+
+.cards{
+  margin:auto;
+  width:80%;
+}
+.flex{
+  display: flex;
+}
+.header-logo{
+  margin: auto;
+  width: 60%;
+}
+
+
+
+@media only screen and (max-width : 805px) {
+  .home, .up-follow-img {
+    display: none;
+  }
+  .header-logo{
+    position: absolute;
+    left: 30px;
+    width: 300px;
+  }
+  .articles{
+    margin:auto;
+  }
+}
+
+
+
+
+
+.col-r-2{
+  width:300px;
+}
+.col-12{
+  width:100%;
+  margin:auto;
+}
+.col-6{
+  width:50%;
+}
+
+
+.left{
+  position: absolute;
+  left:0px;
+  margin-left:10px;
+}
+.right{
+  position: absolute;
+  right: 0px;
+  margin-right:10px;
+
+}
+.icons{
+  margin: auto;
+  height:40px;
+  width: 20%;
+}
+
+.follow-img{
+  width: 40%;
+  height: 40%;
+  max-height: 40%; 
+  max-width: 40%;
+}
+.up-follow-img{
+  width: 40%;
+  height: 40%;
+  max-height: 40%; 
+  max-width: 40%;
+}
+.article{
+  margin:auto;
+  width: 80%;
+  background-color: white;
+  margin-bottom: 30px;
+}
+.articles{
+  display: flex;   
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  z-index: 2;
+}
+.article-node{
+  background-color: white;
+  margin: 10px;
+  width: 300px;
+  height: 300px;
+}
+.article-node-img{
+  width: 300px;
+  height: 200px;
+}
+.article-node-par{
+  display: block;
+  margin: auto;
+  width: 300px;
+  height: 100px;
+  color: #22400E;
+  font-size: 18pt;
+}
+.remove-underline{
+  text-decoration: none;
+}
+.card{
+  width: 300px;
+  height: 300px;
+}
