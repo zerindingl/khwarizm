@@ -1,15 +1,52 @@
----
-  layout: default
-  title: Importance of XML, and how parse XML in Java?
-  img: /img/xml.png
-  category: programming
-  url: /programming/2016/03/06/javaXMLParser.html
----
+ <!doctype html>
+ <html>
+ <head>
+   <title>Khwarizm</title>
+   <link rel = "stylesheet" type = "text/css" href="/khwarizm/css/main.css">
+   <link href='https://fonts.googleapis.com/css?family=Amiri&subset=arabic,latin' rel='stylesheet' type='text/css'>
+   <meta name="viewport" content="width=device-width,initial-scale=1">
+ </head>
 
-<div class = "article">
-  <div class = "article-head">{{page.title}}</div>
+ <body>
+   <div >
+   <header>
+    <div class = " head, col-12, flex">
+
+  <div class = "icons, flex" style = "margin: auto;height:40px;width: 20%;">
+  <span class = "flex" style="margin:auto;">
+    <a href = "https://www.facebook.com/Khwarizm-1102263816503841/?skip_nax_wizard=true">
+      <img src = "/khwarizm/img/f.png" class="up-follow-img" style="margin:5px;">
+    </a>
+    <a href="">
+      <img src="/khwarizm/img/go.png"  class="up-follow-img"style="margin:5px;"></a>
+    <a href = "">
+      <img src="/khwarizm/img/t.png"  class="up-follow-img " style="margin:5px;"></a>
+    <a href = "https://github.com/Khwarizm">
+      <img src="/khwarizm/img/g.png" class="up-follow-img" style="margin:5px;"></a>
+  </span>
+  </div>
+
+  <div style = "width: 60%;height:30%;margin:auto;;">
+    <a href = "/khwarizm/index.html">
+      <img src="/khwarizm/img/khwarizm.png" class="header-logo" style = "display:block;">
+    </a>
+  </div>
+
+  <div class ="home" style = "width: 20%;margin:auto;">
+    <a href = "/khwarizm/index.html">
+      <img  src="/khwarizm/img/home.png" style = "height:20%;width:20%;display:block;margin:auto;">
+    </a>
+  </div>
+  
+</div>
+   </header>
+  
+   <div style = "min-height:100%;">
+     <div  class = "container">
+        <div class = "article">
+  <div class = "article-head">Importance of XML, and how parse XML in Java?</div>
   <br>
-  <img src = "{{site.baseurl}}{{page.img}}" class = "article-img">
+  <img src = "/khwarizm/img/xml.png" class = "article-img">
   <br>
   <br>
   <div class="article-body" >
@@ -39,3 +76,28 @@
 <div class="code"><p>import javax.xml.parsers.DocumentBuilderFactory;&lt;br&gt;import javax.xml.parsers.DocumentBuilder;&lt;br&gt;import javax.xml.transform.Transformer;&lt;br&gt;import javax.xml.transform.TransformerFactory;&lt;br&gt;import javax.xml.transform.dom.DOMSource;&lt;br&gt;import javax.xml.transform.stream.StreamResult;&lt;br&gt;import org.w3c.dom.Attr;&lt;br&gt;import org.w3c.dom.Document;&lt;br&gt;import org.w3c.dom.Element;&lt;br&gt;import java.io.File;&lt;br&gt;import java.util.Scanner;&lt;br&gt;&lt;br&gt;public class CreatXML &lt;br&gt;{ &lt;br&gt;&lt;br&gt;  public static void main(String[] args){&lt;br&gt;&lt;br&gt;  try {&lt;br&gt;    File article = new File("article.txt");&lt;br&gt;    Scanner scan = new Scanner (article);&lt;br&gt;    StringBuilder str = new StringBuilder();&lt;br&gt;    while (scan.hasNext())&lt;br&gt;    { &lt;br&gt;      str.append(scan.nextLine());&lt;br&gt;    }&lt;br&gt;    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();&lt;br&gt;    DocumentBuilder builder = factory.newDocumentBuilder();&lt;br&gt;    Document doc = builder.newDocument();&lt;br&gt;&lt;br&gt;    Element body  = doc.createElement("div");&lt;br&gt;    body.appendChild(doc.createTextNode(str.toString()));&lt;br&gt;    doc.appendChild(body);&lt;br&gt;    &lt;br&gt;    Attr classAttr = doc.createAttribute("class");&lt;br&gt;    classAttr.setValue("article-body");&lt;br&gt;    body.setAttributeNode(classAttr);&lt;br&gt;    &lt;br&gt;    &lt;br&gt;    TransformerFactory transFatory = TransformerFactory.newInstance();&lt;br&gt;    Transformer transformer = transFatory.newTransformer();&lt;br&gt;    DOMSource dom = new DOMSource(doc);&lt;br&gt;    &lt;br&gt;    StreamResult result = new StreamResult(System.out);&lt;br&gt;    transformer.transform(dom, result);&lt;br&gt;&lt;br&gt;  }catch (Exception e){e.printStackTrace();}  &lt;br&gt;  }&lt;br&gt;}&lt;br&gt;</p></div>
 </div>
 </div>
+     </div>
+  
+   <footer>
+    <div>
+  <div class = "up-foot">
+  <div class = "flex" style = "margin-left:25px;height:40px;">
+    <a href = "https://www.facebook.com/Khwarizm-1102263816503841/?skip_nax_wizard=true">
+      <img src="/khwarizm/img/facebook.png" class="follow-img" style="margin:2.5px;"></a>
+    <a href="">
+      <img src="/khwarizm/img/google+.png"  class="follow-img"style="margin:2.5px;"></a>
+    <a href = "">
+      <img src="/khwarizm/img/twitter.png"  class="follow-img " style="margin:2.5px;"></a>
+    <a href = "https://github.com/Khwarizm">
+      <img src="/khwarizm/img/github.png" class="follow-img" style="margin:2.5px;"></a>
+  </div>
+  </div>
+  <div class = "flex">
+    <img src="/khwarizm/img/khwarizm.png" class="footer-logo">
+  </div>
+</div>
+   </footer>
+   </div>
+   </div>
+ </body>
+
