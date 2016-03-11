@@ -3,8 +3,8 @@
  <head>
    <title>Khwarizm</title>
    <link rel = "stylesheet" type = "text/css" href="/khwarizm/css/main.css">
-   <link href='https://fonts.googleapis.com/css?family=Amiri&subset=arabic,latin' rel='stylesheet' type='text/css'>
-   <meta name="viewport" content="width=device-width,initial-scale=1">
+   <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>   <meta name="viewport" content="width=device-width,initial-scale=1">
+   <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
  </head>
 
  <body>
@@ -12,8 +12,7 @@
    <header>
     <div class = " head, col-12, flex">
 
-  <div class = "icons, flex" style = "margin: auto;height:40px;width: 20%;">
-  <span class = "flex" style="margin:auto;">
+  <div class = "top-icons, flex">
     <a href = "https://www.facebook.com/Khwarizm-1102263816503841/?skip_nax_wizard=true">
       <img src = "/khwarizm/img/f.png" class="up-follow-img" style="margin:5px;">
     </a>
@@ -23,55 +22,58 @@
       <img src="/khwarizm/img/t.png"  class="up-follow-img " style="margin:5px;"></a>
     <a href = "https://github.com/Khwarizm">
       <img src="/khwarizm/img/g.png" class="up-follow-img" style="margin:5px;"></a>
-  </span>
   </div>
 
-  <div style = "width: 60%;height:30%;margin:auto;;">
+  <div class = "header-logo-container">
     <a href = "/khwarizm/index.html">
-      <img src="/khwarizm/img/khwarizm.png" class="header-logo" style = "display:block;">
+      <img src="/khwarizm/img/khwarizm.png" class="header-logo">
     </a>
   </div>
 
-  <div class ="home" style = "width: 20%;margin:auto;">
+  <div class ="home">
     <a href = "/khwarizm/index.html">
-      <img  src="/khwarizm/img/home.png" style = "height:20%;width:20%;display:block;margin:auto;">
+      <img  src="/khwarizm/img/home.png" class = "home-img">
     </a>
   </div>
   
 </div>
    </header>
   
-   <div style = "min-height:100%;">
      <div  class = "container">
         <div class = "article">
-<div class = "article-body">
-<h3>Keyworks</h3>
-  <li>Invariant: Is a condition that must be true in during some portion of the algorithm</li>
-  <li>Complexity: Framework to Study efficiency of algoirthm for solving a particular problem X </li>
-  <li>Inversion: is a pair of Keys that are out of order in an array. let(A(1),...,A(n)) is a sequence of n items and i < j and A(i) > A(j) then pair(i,j) is what so-called inversion of A and inv(A) is the number of inversion in A</li>
-<h2>selection sort</h2>
-<h4>complexity<h4> 
-    <pre>   ~N^2/2|O(N^2) for both comparision and exchange</pre><br>
+  <div class = "article-head">Sorting Algorithms</div> 
+  <img src = "/khwarizm/img/sorting.png" class = "article-img">
+  <div class = "article-body">
+<h4>Keyworks</h4>
+  <li><b>Invariant:</b> Is a condition that must be true during some portion of the algorithm</li>
+  <li><b>Complexity:</b> Framework to Study efficiency of algoirthm for solving a particular problem</li>
+  <li><b>Inversion:</b> is a pair of Keys that are out of order in an array. let(A(1),...,A(n)) is a sequence of n items and i < j and A(i) > A(j) then pair(i,j) is what so-called inversion of A and inv(A) is the number of inversion in array A</li>
+  <li><b>stability:</b> maintaining the relative order (before sorting) of items with qual keys.</li>
+<h3>selection sort</h3>
+<h4>complexity</h4> 
+       <p> ~N^2/2|O(N^2) for both comparision and exchange</p>
 <h4>invariants</h4> 
  <li>Entries on left of pointer are in ascending order</li>
  <li>No Entry on right of pointer is smaller than any Entry on the left</li>
-<h4>note<h4>
-  <br>Running time is insensitive to input<br>
+<h4>note</h4>
+  <li>Running time is insensitive to input</li>
+  <li>is not stable sorting algorithm because of long distance exchange</li>
 
+<h4>java example</h4>
 <div class = "code">
 public static void sort(Comparable[] a)<br>
-{ // Sort a[] into increasing order.<br>
-  int N = a.length; // array length<br>
+{ 
+  int N = a.length;
   for (int i = 0; i < N; i++)<br>
-  { // Exchange a[i] with smallest entry in a[i+1...N).<br>
-    int min = i; // index of minimal entr.<br>
+  {
+    int min = i;
     for (int j = i+1; j < N; j++)<br>
       if (less(a[j], a[min])) min = j;<br>
     exch(a, i, min);<br>
   }<br>
 }<br>
 </div>
-<hr>
+
 
 <h2>Insertion sort</h2>
 <h4>complexity</h4>
@@ -84,6 +86,7 @@ public static void sort(Comparable[] a)<br>
 <h4>note</h4>
   <li> partially-sorted array (nubmer of inversions <= cN |N is array length && c is constant)  take linear time in insertion sort</li>
   <li> you can use binary search in with insertion sort to reduce the complexity to O(N^2) for comparisions and NlogN for exchange</li>
+  <li> produce stable sorting</li>
   <div class = "code">
 public static void sort(Comparable[] a)<br>
 {<br>
@@ -100,8 +103,9 @@ public static void sort(Comparable[] a)<br>
   <li>best-case: NlogN for comparisions and exchange</li>
   <li>worst-case: O(N^3/2) for both comparisions and exchange</li>
 <h4>what difference between shellsort and insertsort?</h4>
-  insertion sort has trasition 1 and while shellsort has transition h | 1 <= h < N
-
+  <p>insertion sort has trasition 1 and while shellsort has transition h | 1 <= h < N</p>
+<h4>note</h4>
+ <li> isn't stable algorithm because of long distance exchange</li>
 <div class = "code">
 public static void sort(Comparable[] a)<br>
 {<br>
@@ -121,8 +125,8 @@ public static void sort(Comparable[] a)<br>
 </div>
 
 <h2>shuffle</h2>
-// give each item random key and sort those keys. High coast
-// knuth shuffle: using incrementing pointer i  and random pointer k and swap each i with k. linear Time
+ <li>give each item random key and sort those keys. High coast</li>
+ <li>knuth shuffle: using incrementing pointer i  and random pointer k and swap each i with k. linear Time</li>
 <div class = "code">
 public static void shuffle(Object[] a)<br>
 { <br>
@@ -136,7 +140,8 @@ public static void shuffle(Object[] a)<br>
 </div>
 
 <h2>Merge sort</h2>
-
+<h4>note</h4>
+<li>produce stable sorting because if items are equal it add the item on the left</li>
 <div class = "code">
 public class merge<br>
 {   static Integer[] array = null;<br>
@@ -229,7 +234,6 @@ public class merge<br>
   </div>
 </div>
    </footer>
-   </div>
    </div>
  </body>
 
