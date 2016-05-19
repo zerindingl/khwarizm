@@ -1,0 +1,266 @@
+---
+  layout: default
+  title: Article Generator
+  img: http://placehold.it/300x200
+  category: projects
+---
+        <div class ="inputOutputContainer">
+            <div class = "inputContainer">
+                <div class = "buttonsContainer">
+                    <input class = "formatButton" id = "bold"   type = "image" src = "{{site.baseurl}}/img/bold.png">
+                    <input class = "formatButton" id = "italic" type = "image" src = "{{site.baseurl}}/img/italic.png">
+                    <input class = "formatButton" id = "link"   type = "image" src = "{{site.baseurl}}/img/link.png">
+                    <input class = "formatButton" id = "code"   type = "image" src = "{{site.baseurl}}/img/code.png">
+                    <input class = "formatButton" id = "image"  type = "image" src = "{{site.baseurl}}/img/image.png">
+                    <input class = "formatButton" id = "ol"     type = "image" src = "{{site.baseurl}}/img/ol.png">
+                    <input class = "formatButton" id = "ul"     type = "image" src = "{{site.baseurl}}/img/ul.png">
+                    <input class = "formatButton" id = "haeding"type = "image" src = "{{site.baseurl}}/img/heading.png">
+                </div>
+                <textarea id = "input" class = "inputText" rows="50" cols="50" resize="vertical">
+                    input text
+                </textarea>
+            </div>
+            <div id = "output"></div>
+        </div>
+
+        <script>
+
+          var backArticle = "";
+          // those two for comparsions insertion | deletion.
+          var oldArticle = "";
+          var newArticle = "";
+
+          var INSERTION = true;
+          var DELETION = false;
+         
+          var BOLD = 1;
+          var ITALIC = 2; 
+          var LINK = 3;
+          var CODE = 4;
+          var IMAGE = 5;
+          var OL = 6;
+          var UL = 7;
+          var HEADING = 8;
+          var type;
+          var tagCode = {
+            BOLD_OT:"<b>",
+            BOLD_CT:"</b>",
+            PAR_OT:"<p>",
+            PAR_CT:"</p>",
+            CODE_OT:"<code>",
+            CODE_CT:"/code>",   
+            H3_OT:"<h3>",
+            H3_CT:"</h3>",
+            H4_OT:"<h4>",
+            H4_CT:"</h4>",
+            H5_OT:"<h5>",
+            H5_CT:"</h5>",
+
+          }
+          var tags = [];
+          var EQUAL = false;
+          window.addEventListener('load', function(){
+            document.getElementById('input').addEventListener('change', function(){
+                newArticle = document.getElementById('input').value;
+                // compare newArticle with oldArticle
+                // assume changed event triggered if string length change.
+                var start = 0;
+                var length = 0;
+                var type
+                function() {
+                    if(oldArticle > newArticle) type = DELETION;
+                    else type = INSERTION;
+                    length = Math.abs(newArticle.length - oldArticle.lenth);
+                    for(int i = 0; i < oldArticle.l)
+                        // how get start of change.
+                        // consider all possible cases
+                        // insert to that string aaaaaaaaaa
+                        // and that one  abc abc abc abc
+                }
+                
+                if(type == INSERTION) textInserted;
+                else if (type == DELETION) updateTagsInThatRange(start, length);           
+                
+                // update tags indices
+                udpateTags(type, start+length, length);
+                updateBackString;
+                oldArticle = newArticle;
+            });
+
+            document.getElementById("bold").addEventListener('click', style(BOLD));
+            document.getElementById("italic").addEventListener('click', style(ITALIC));
+            document.getElementById("link").addEventListener('click', style(LINK));
+            document.getElementById("code").addEventListener('click', style(CODE));
+            document.getElementById("image").addEventListener('click', style(IMAGE));
+            document.getElementById("ol").addEventListener('click', style(OL));
+            document.getElementById("ul").addEventListener('click', style(UL));
+            document.getElementById("heading").addEventListener('click', style(HEADING));
+
+          });
+            function style(type){
+                // contract class for tag code.
+                switch(type)
+                {
+                    case BOLD: 
+                    {
+                        format(tagCode.BOLD_OT, tagCode.BOLD_CT);
+                        break;
+                    }
+                    case PAR: 
+                    {
+                        format(tagCode.PAR_OT, tagCode.PAR_CT);
+                        break;
+                    }
+                    /*case LINK: 
+                    {
+                        // get src from user.
+                        break;
+                    }
+                    case IMAGE: 
+                    {
+                        // get src from user
+                        break;
+                    }
+                    case OL: 
+                    {
+                        // different method
+                        break;
+                    }
+                    case UL: 
+                    {
+                        // the same as above
+                        break;
+                    }
+                    case HEADING: 
+                    {
+                        // one method for three different tags for one buttom.
+                        break;
+                    }*/
+                }
+                updateBackString;
+            }
+            function format(openTag, closeTag){
+                var input = document.getElementById('input');
+                var start =  input.selectionStart;
+                var end = input.selectionEnd;
+                // nothing selected
+                if (start == end) break;
+                
+                // if there is tag with start index and tag with end index both in the same type remove them.
+                for(int i = 0; i < tags.length; i++)
+                    if(tags[i].index == start)
+                        for(int j = i+1; j < tags.length; j++)
+                            if(tags.get(j).index == end && startAndEndTags(tags.get(i), tags.get(j)))
+                            { // removing order is important.
+                                logger.info("format: those tags with indices {"+i+", "+j+"} are formated and you gonna removed in the following two lines");
+                                tags.splice(j,1);
+                                tags.splice(i,1);
+                                return;
+                            }
+        
+                tags.push({'index':start,'tag':openTag });
+                tags.sort(function(a, b){return a.index-b.index});
+
+                tags.push({'index':end,'tag':closeTag });
+                tags.sort(function(a, b){return a.index-b.index});             
+            }
+            function updateTagesInThatRange(index, length){
+                var end = index+length;
+                if(length==)end++;//why**********************************
+                var breakLoop = false;
+                for(int i = 0; i<tags.length; i++)
+                {
+                    var tag = tags[i];
+                    if(tag.index > end) break;
+                    if(tag.index >= index && tag.index <= end)
+                    {
+                        for(int j = i+1; j < tags.length; j++)
+                        {
+                            var secondTag = tags[j];
+                            if(secondTag.index > end) break;
+                            if(startAndEndTags(tag, secondTag))
+                            {
+                                tags.splice(i, 1);
+                                tags.splice(j, 1);
+                                i-=1;
+                                breakLoop = true;
+                            }
+                        }
+                        if(breakLoop) continue;
+                        tag.index -= (tag.index-index);
+                    }
+                }
+            }
+            function updateTags(type, index, length){
+                var tagIndex = linearSearch(index);
+                if(tagIndex = 1- || (tagIndex+1) >= tags.size()) return;
+                if(EQUAL == false) tagIndex++; //FIX what is that? ***********************************
+                else EQUAL = false;
+                for(int i = tagIndex; i< tag.length; i++)
+                {
+                    if(type == INSERTION) tag[i].index += length;
+                    else(tyep == DELETION) tag[i].index -= length;
+                }
+            }          
+            function updateBackString(){
+                backArticle = "";
+                backArticle.append(document.getElementById('input').value);
+                for(int i = tags.length-1; i>=0; i--)
+                {
+                    var tag = tags[i];
+                    backArticle.splice(tag.index, 0, tag.tag);
+                }
+                document.getElementById('output').value = backArticle;
+            }
+            function toLines(article){
+                var newArticle= "";                
+                var lines = article.spint("\n");
+                for(int i = 0; i < lines; i++)
+                    newArticle.concat(lines[i]+"<br>\n");
+                return newArticle;
+            }
+            function getTagType(c){
+                var type;
+                if(c == CODE_CT || c == CODE_OT)
+                    type = CODE;
+                else if(c == PAR_CT || c == PAR_OT)
+                    type  = PAR;
+                // .......
+                return type;
+            }
+            function getTagLength(code){
+                return code.length;
+            }
+            function startAndEndTags(start, end){
+                return getTagType(start.tag) == getTagType(end.tag) &&  
+                    openTag(start) && 
+                    !openTag(end);
+            }
+            function openTag(start)
+            {
+                return start.slice(start.length-2, 3) == "OT";
+            }
+            function getOff(){}
+            function LinearSearch(i){ //FIX stupid search need some sleep
+                var length = tags.length;
+                if(length == 0) return -2;
+                else if(i <= tags[i].index) return-1;
+                else if(i > tags[length-1].index) return length-1;
+                for(int tag = 0; tag < length; tag++)
+                {
+                    if(tags[tag].index == i)
+                    {
+                        EQUAL = true;
+                        return tag;
+                    }
+                    else if(tags[tag].index < i && tags[tag+1].index >= i)
+                    {
+                        EQUAL = false;
+                        return tag;
+                    }
+                }
+            }
+            function textInserted(){
+                $( "#output" ).append(document.getElementById('input').value);
+            }
+        </script>

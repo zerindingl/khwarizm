@@ -5,6 +5,8 @@
    <link rel = "stylesheet" type = "text/css" href="/khwarizm/css/main.css">
    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>   <meta name="viewport" content="width=device-width,initial-scale=1">
    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
  </head>
 
  <body>
@@ -67,7 +69,70 @@
 </ul>
 <br>
 <h3>How create XMl in java?</h3>
-<div class="code"><p>import javax.xml.parsers.DocumentBuilderFactory;&lt;br&gt;import javax.xml.parsers.DocumentBuilder;&lt;br&gt;import javax.xml.transform.Transformer;&lt;br&gt;import javax.xml.transform.TransformerFactory;&lt;br&gt;import javax.xml.transform.dom.DOMSource;&lt;br&gt;import javax.xml.transform.stream.StreamResult;&lt;br&gt;import org.w3c.dom.Attr;&lt;br&gt;import org.w3c.dom.Document;&lt;br&gt;import org.w3c.dom.Element;&lt;br&gt;import java.io.File;&lt;br&gt;import java.util.Scanner;&lt;br&gt;&lt;br&gt;public class CreatXML &lt;br&gt;{ &lt;br&gt;&lt;br&gt;  public static void main(String[] args){&lt;br&gt;&lt;br&gt;  try {&lt;br&gt;    File article = new File("article.txt");&lt;br&gt;    Scanner scan = new Scanner (article);&lt;br&gt;    StringBuilder str = new StringBuilder();&lt;br&gt;    while (scan.hasNext())&lt;br&gt;    { &lt;br&gt;      str.append(scan.nextLine());&lt;br&gt;    }&lt;br&gt;    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();&lt;br&gt;    DocumentBuilder builder = factory.newDocumentBuilder();&lt;br&gt;    Document doc = builder.newDocument();&lt;br&gt;&lt;br&gt;    Element body  = doc.createElement("div");&lt;br&gt;    body.appendChild(doc.createTextNode(str.toString()));&lt;br&gt;    doc.appendChild(body);&lt;br&gt;    &lt;br&gt;    Attr classAttr = doc.createAttribute("class");&lt;br&gt;    classAttr.setValue("article-body");&lt;br&gt;    body.setAttributeNode(classAttr);&lt;br&gt;    &lt;br&gt;    &lt;br&gt;    TransformerFactory transFatory = TransformerFactory.newInstance();&lt;br&gt;    Transformer transformer = transFatory.newTransformer();&lt;br&gt;    DOMSource dom = new DOMSource(doc);&lt;br&gt;    &lt;br&gt;    StreamResult result = new StreamResult(System.out);&lt;br&gt;    transformer.transform(dom, result);&lt;br&gt;&lt;br&gt;  }catch (Exception e){e.printStackTrace();}  &lt;br&gt;  }&lt;br&gt;}&lt;br&gt;</p></div>
+<div class="code"><p>import javax.xml.parsers.DocumentBuilderFactory;<br>
+import javax.xml.parsers.DocumentBuilder;<br>
+import javax.xml.transform.Transformer;<br>
+import javax.xml.transform.TransformerFactory;<br>
+import javax.xml.transform.dom.DOMSource;<br>
+import javax.xml.transform.stream.StreamResult;<br>
+import javax.xml.transform.OutputKeys;<br>
+import org.w3c.dom.Attr;<br>
+import org.w3c.dom.Document;<br>
+import org.w3c.dom.Element;<br>
+import java.io.File;<br>
+import java.util.Scanner;<br>
+import java.io.StringWriter;<br>
+<br>
+public class CreatXML <br>
+{ <br>
+    public static void main(String[] args){<br>
+<br>
+        try {<br>
+            File article = new File("article.txt");<br>
+            Scanner scan = new Scanner (article);<br>
+            StringBuilder str = new StringBuilder();<br>
+            while (scan.hasNext())<br>
+            { <br>
+               str.append(scan.nextLine());<br>
+               str.append("<br>");<br>
+            }<br>
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();<br>
+            DocumentBuilder builder = factory.newDocumentBuilder();<br>
+            Document doc = builder.newDocument();<br>
+<br>
+            Element body  = doc.createElement("div");<br>
+            doc.appendChild(body);<br>
+    <br>
+            Attr classAttr = doc.createAttribute("class");<br>
+            classAttr.setValue("code");<br>
+            body.setAttributeNode(classAttr);<br>
+    <br>
+            Element p = doc.createElement("p");<br>
+            p.appendChild(doc.createTextNode(str.toString()));<br>
+            body.appendChild(p);<br>
+    <br>
+            TransformerFactory transFatory = TransformerFactory.newInstance();<br>
+            Transformer transformer = transFatory.newTransformer();<br>
+            transformer.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");<br>
+            DOMSource dom = new DOMSource(doc);<br>
+<br>
+            StringWriter writer = new StringWriter();<br>
+            StreamResult result = new StreamResult(writer);<br>
+            transformer.transform(dom, result);<br>
+            System.out.println(removeXMLTags(writer.toString()));<br>
+<br>
+        }<br>
+        catch (Exception e)<br>
+        {<br>
+            e.printStackTrace();<br>
+        }  <br>
+    }<br>
+    public static String removeXMLTags(String str){<br>
+        int index = str.indexOf(">");<br>
+        return str.substring(index+1);<br>
+    }<br>
+<br>
+}<br></p></div>
 </div>
 </div>
      </div>

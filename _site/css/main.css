@@ -139,6 +139,7 @@ p{
   padding-top: 80px;
   min-height: 800px; 
   width: 100%;
+  margin:auto;
 }
 .article{
   margin:auto;
@@ -175,8 +176,8 @@ p{
   background-color: white;
   margin: 10px;
   display: block;
-  width: 300px;
-  height: 300px;
+  max-width: 300px;
+  max-height: 300px;
 }
 .article-node-img{
   display: block;
@@ -260,7 +261,58 @@ p{
 }
 .up-follow-img{
   padding-top: 15px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
+
+/*this css of Article generator*/ 
+body{
+  margin:auto;
+}
+.inputText{
+  resize:vertical;
+  width:600px;
+  height: 100%;
+  margin: 5px;
+}
+#output{
+  width: 800px;
+  margin: 10px;
+  border-style: groove;
+  padding: 10px;
+}
+.textarea{
+  width: 40%;
+  height: 100%;
+}
+.inputOutputContainer{
+  display:flex;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: white;
+}
+.inputContainer{
+  margin: 5px;
+  display: block;
+  height: 100%;
+}
+.buttonsContainer{
+  display:flex;
+  position: center;
+  margin: auto;
+  border-style: groove;
+}
+.formatButton{
+  width:20px;
+  padding: 10px;
+  height: 20px;
+  margin: 10px;
+}
+.subject_intro{
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+}
